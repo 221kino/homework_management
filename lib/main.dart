@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-abcdefghijk
+abcdefghijk;
 
 void main() {
   runApp(const MyApp());
