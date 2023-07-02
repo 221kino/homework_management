@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My App',
       theme: ThemeData(
-        primarySwatch: Colors.red, // ƒfƒUƒCƒ“‚Ì•ÏXFÔF
+        primarySwatch: Colors.red, // ãƒ‡ã‚¶ã‚¤ãƒ³ã®å¤‰æ›´ï¼šèµ¤è‰²
       ),
       initialRoute: '/',
       routes: {
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/logo.png', // ‰æ–Ê¶ã‚É”z’u‚³‚ê‚éƒƒS‰æ‘œ
+              'assets/logo.png', // ç”»é¢å·¦ä¸Šã«é…ç½®ã•ã‚Œã‚‹ãƒ­ã‚´ç”»åƒ
               width: 100,
               height: 100,
             ),
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
-              child: Text('Šw¶‚Í‚±‚¿‚ç'),
+              child: Text('å­¦ç”Ÿã¯ã“ã¡ã‚‰'),
             ),
             SizedBox(height: 10),
             ElevatedButton(
@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => NextPage3()));
               },
-              child: Text('‹³ˆõ‚Í‚±‚¿‚ç'),
+              child: Text('æ•™å“¡ã¯ã“ã¡ã‚‰'),
             ),
           ],
         ),
@@ -71,39 +71,39 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('ƒƒOƒCƒ“'),
+            Text('ãƒ­ã‚°ã‚¤ãƒ³'),
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
-                labelText: 'ƒ†[ƒU[ID',
+                labelText: 'ãƒ¦ãƒ¼ã‚¶ãƒ¼ID',
               ),
             ),
             SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
-                labelText: 'ƒpƒXƒ[ƒh',
+                labelText: 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
               ),
             ),
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                // ƒpƒXƒ[ƒh‚ğ–Y‚ê‚½ê‡‚Ìˆ—
+                // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚ŒãŸå ´åˆã®å‡¦ç†
               },
-              child: Text('ƒpƒXƒ[ƒh‚ğ–Y‚ê‚½ê‡'),
+              child: Text('ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚ŒãŸå ´åˆ'),
             ),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/dashboard/student');
               },
-              child: Text('ƒƒOƒCƒ“'),
+              child: Text('ãƒ­ã‚°ã‚¤ãƒ³'),
             ),
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                // V‹KƒAƒJƒEƒ“ƒgì¬‚Ìˆ—
+                // æ–°è¦ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆã®å‡¦ç†
               },
-              child: Text('V‹KƒAƒJƒEƒ“ƒgì¬‚Í‚±‚¿‚ç'),
+              child: Text('æ–°è¦ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆã¯ã“ã¡ã‚‰'),
             ),
           ],
         ),
@@ -122,18 +122,18 @@ class StudentDashboardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(20),
         children: [
-          Text('ToDoƒŠƒXƒg'),
+          Text('ToDoãƒªã‚¹ãƒˆ'),
           SizedBox(height: 20),
           TaskItem(
-            taskName: '‰Û‘èA',
+            taskName: 'èª²é¡ŒA',
             deadline: DateTime(2023, 7, 10),
           ),
           TaskItem(
-            taskName: '‰Û‘èB',
+            taskName: 'èª²é¡ŒB',
             deadline: DateTime(2023, 7, 5),
           ),
           TaskItem(
-            taskName: '‰Û‘èC',
+            taskName: 'èª²é¡ŒC',
             deadline: DateTime(2023, 7, 1),
           ),
         ],
@@ -152,63 +152,63 @@ class TeacherDashboardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(20),
         children: [
-          Text('h‘è“o˜^‰æ–Ê'),
+          Text('å®¿é¡Œç™»éŒ²ç”»é¢'),
           SizedBox(height: 20),
           DropdownButton<String>(
             items: [
               DropdownMenuItem(
-                child: Text('‰È–ÚA'),
-                value: '‰È–ÚA',
+                child: Text('ç§‘ç›®A'),
+                value: 'ç§‘ç›®A',
               ),
               DropdownMenuItem(
-                child: Text('‰È–ÚB'),
-                value: '‰È–ÚB',
+                child: Text('ç§‘ç›®B'),
+                value: 'ç§‘ç›®B',
               ),
               DropdownMenuItem(
-                child: Text('‰È–ÚC'),
-                value: '‰È–ÚC',
+                child: Text('ç§‘ç›®C'),
+                value: 'ç§‘ç›®C',
               ),
             ],
             onChanged: (value) {
-              // ‘I‘ğ‚µ‚½‰È–Ú‚Ìˆ—
+              // é¸æŠã—ãŸç§‘ç›®ã®å‡¦ç†
             },
-            hint: Text('‰È–Ú‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢'),
+            hint: Text('ç§‘ç›®ã‚’é¸æŠã—ã¦ãã ã•ã„'),
           ),
           SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
-              labelText: '‘è–¼',
+              labelText: 'é¡Œå',
             ),
           ),
           SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
-              labelText: 'ŠJn“ú',
+              labelText: 'é–‹å§‹æ—¥',
             ),
           ),
           SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
-              labelText: '’÷‚ßØ‚è',
+              labelText: 'ç· ã‚åˆ‡ã‚Š',
             ),
           ),
           SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
-              labelText: '—\’èH”',
+              labelText: 'äºˆå®šå·¥æ•°',
             ),
           ),
           SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
-              labelText: 'Š—vŠÔ',
+              labelText: 'æ‰€è¦æ™‚é–“',
             ),
           ),
           SizedBox(height: 10),
           TextField(
             maxLines: 5,
             decoration: InputDecoration(
-              labelText: 'ƒRƒƒ“ƒg',
+              labelText: 'ã‚³ãƒ¡ãƒ³ãƒˆ',
             ),
           ),
           SizedBox(height: 20),
@@ -218,21 +218,21 @@ class TeacherDashboardPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('–ß‚é'),
+                child: Text('æˆ»ã‚‹'),
               ),
               Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  // ˆê•Û‘¶‚Ìˆ—
+                  // ä¸€æ™‚ä¿å­˜ã®å‡¦ç†
                 },
-                child: Text('ˆê•Û‘¶'),
+                child: Text('ä¸€æ™‚ä¿å­˜'),
               ),
               SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
-                  // “o˜^‚Ìˆ—
+                  // ç™»éŒ²ã®å‡¦ç†
                 },
-                child: Text('“o˜^'),
+                child: Text('ç™»éŒ²'),
               ),
             ],
           ),
@@ -255,11 +255,11 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     Color? backgroundColor;
     if (deadline.isBefore(DateTime.now().subtract(Duration(days: 1)))) {
-      backgroundColor = Colors.red; // ’÷‚ßØ‚è`1“ú‘OFÔF
+      backgroundColor = Colors.red; // ç· ã‚åˆ‡ã‚Šï½1æ—¥å‰ï¼šèµ¤è‰²
     } else if (deadline.isBefore(DateTime.now().subtract(Duration(days: 3)))) {
-      backgroundColor = Colors.yellow; // 1`3“ú‘OF‰©F
+      backgroundColor = Colors.yellow; // 1ï½3æ—¥å‰ï¼šé»„è‰²
     } else if (deadline.isBefore(DateTime.now().subtract(Duration(days: 7)))) {
-      backgroundColor = Colors.blue; // 3`7“ú‘OFÂF
+      backgroundColor = Colors.blue; // 3ï½7æ—¥å‰ï¼šé’è‰²
     }
 
     return Container(
@@ -267,15 +267,15 @@ class TaskItem extends StatelessWidget {
       child: Row(
         children: [
           Checkbox(
-            value: true, // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô‚Í“K‹Xİ’è‚·‚é
+            value: true, // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹ã¯é©å®œè¨­å®šã™ã‚‹
             onChanged: (value) {
-              // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìó‘Ô•ÏX‚Ìˆ—
+              // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®çŠ¶æ…‹å¤‰æ›´æ™‚ã®å‡¦ç†
             },
           ),
           SizedBox(width: 10),
           Text(taskName),
           Spacer(),
-          Text(deadline.toString()), // Šú“ú‚Ì•\¦‚Í“K‹XƒtƒH[ƒ}ƒbƒg‚·‚é
+          Text(deadline.toString()), // æœŸæ—¥ã®è¡¨ç¤ºã¯é©å®œãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹
         ],
       ),
     );
