@@ -1,125 +1,283 @@
 import 'package:flutter/material.dart';
+import './page2.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My App',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.red, // デザインの変更：赤色
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+        '/dashboard/student': (context) => StudentDashboardPage(),
+        '/dashboard/teacher': (context) => TeacherDashboardPage(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('Home'),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            Image.asset(
+              'assets/logo.png', // 画面左上に配置されるロゴ画像
+              width: 100,
+              height: 100,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text('学生はこちら'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => NextPage3()));
+              },
+              child: Text('教員はこちら'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('ログイン'),
+            SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'ユーザーID',
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'パスワード',
+              ),
+            ),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                // パスワードを忘れた場合の処理
+              },
+              child: Text('パスワードを忘れた場合'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/dashboard/student');
+              },
+              child: Text('ログイン'),
+            ),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                // 新規アカウント作成の処理
+              },
+              child: Text('新規アカウント作成はこちら'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StudentDashboardPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Student Dashboard'),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(20),
+        children: [
+          Text('ToDoリスト'),
+          SizedBox(height: 20),
+          TaskItem(
+            taskName: '課題A',
+            deadline: DateTime(2023, 7, 10),
+          ),
+          TaskItem(
+            taskName: '課題B',
+            deadline: DateTime(2023, 7, 5),
+          ),
+          TaskItem(
+            taskName: '課題C',
+            deadline: DateTime(2023, 7, 1),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TeacherDashboardPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Teacher Dashboard'),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(20),
+        children: [
+          Text('宿題登録画面'),
+          SizedBox(height: 20),
+          DropdownButton<String>(
+            items: [
+              DropdownMenuItem(
+                child: Text('科目A'),
+                value: '科目A',
+              ),
+              DropdownMenuItem(
+                child: Text('科目B'),
+                value: '科目B',
+              ),
+              DropdownMenuItem(
+                child: Text('科目C'),
+                value: '科目C',
+              ),
+            ],
+            onChanged: (value) {
+              // 選択した科目の処理
+            },
+            hint: Text('科目を選択してください'),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
+              labelText: '題名',
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
+              labelText: '開始日',
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
+              labelText: '締め切り',
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
+              labelText: '予定工数',
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
+              labelText: '所要時間',
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            maxLines: 5,
+            decoration: InputDecoration(
+              labelText: 'コメント',
+            ),
+          ),
+          SizedBox(height: 20),
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('戻る'),
+              ),
+              Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  // 一時保存の処理
+                },
+                child: Text('一時保存'),
+              ),
+              SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () {
+                  // 登録の処理
+                },
+                child: Text('登録'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TaskItem extends StatelessWidget {
+  final String taskName;
+  final DateTime deadline;
+
+  const TaskItem({
+    required this.taskName,
+    required this.deadline,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Color? backgroundColor;
+    if (deadline.isBefore(DateTime.now().subtract(Duration(days: 1)))) {
+      backgroundColor = Colors.red; // 締め切り～1日前：赤色
+    } else if (deadline.isBefore(DateTime.now().subtract(Duration(days: 3)))) {
+      backgroundColor = Colors.yellow; // 1～3日前：黄色
+    } else if (deadline.isBefore(DateTime.now().subtract(Duration(days: 7)))) {
+      backgroundColor = Colors.blue; // 3～7日前：青色
+    }
+
+    return Container(
+      color: backgroundColor,
+      child: Row(
+        children: [
+          Checkbox(
+            value: true, // チェックボックスの状態は適宜設定する
+            onChanged: (value) {
+              // チェックボックスの状態変更時の処理
+            },
+          ),
+          SizedBox(width: 10),
+          Text(taskName),
+          Spacer(),
+          Text(deadline.toString()), // 期日の表示は適宜フォーマットする
+        ],
+      ),
     );
   }
 }
